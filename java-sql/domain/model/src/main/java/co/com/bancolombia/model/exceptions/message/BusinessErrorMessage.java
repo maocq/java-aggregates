@@ -12,8 +12,8 @@ public enum BusinessErrorMessage {
     PRODUCT_DOES_NOT_EXIST("XXB0004", "Product doesn't exist"),
     ORDER_DOES_NOT_EXIST("XXB0005", "Order doesn't exist"),
     ORDER_DETAIL_DOES_NOT_EXIST("XXB0006", "Order detail doesn't exist"),
-    INVALID_ORDER_STATE("XXB0007", "Order doesn't exist"),
-    EMPTY_ORDER("XXB0007", "Empty order");
+    INVALID_ORDER_STATE("XXB0007", "Invalid Order state"),
+    EMPTY_ORDER("XXB0008", "Empty order");
 
     private final String code;
     private final String message;
