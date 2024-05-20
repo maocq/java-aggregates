@@ -135,3 +135,32 @@ select od1_0.id,od1_0.client_id, ... from orders od1_0 left join detail_products
 update orders set client_id=?,client_name=?,date=?,state=?,total=? where id=?                                                    #Actualiza total
 delete from detail_products where id=?                                                                                           #Elimina el detalle
 ```
+
+
+
+### Json Query
+```sql
+SELECT json_build_object(
+               'id', ord.id,
+               'client', json_build_object(
+                       'id', ord.client_id,
+                       'name', ord.client_name
+                         ),
+               'detail', json_agg(
+                       json_build_object(
+                               'id', dp.id,
+                               'product', json_build_object(
+                                       'id', dp.product_id,
+                                       'name', dp.product_name,
+                                       'price', dp.product_price,
+                                       'quantity', dp.quantity
+                                          ),
+                               'totalPrice', dp.total_price
+                       )
+                         )
+       )
+FROM orders ord
+         JOIN detail_products dp ON dp.order_id = ord.id
+WHERE ord.id = 2
+GROUP BY ord.id
+```
