@@ -1,8 +1,7 @@
 # Java NoSql
 
 ```shell
-export MONGODB_VERSION=6.0-ubi8
-docker run --name mongodb -d -p 27017:27017 mongodb/mongodb-community-server:$MONGODB_VERSION
+docker run --name mongodb -d -p 27017:27017 mongo:8.0.3
 ```
 
 # docker start mongodb 
@@ -52,6 +51,9 @@ curl --location 'http://localhost:8080/api/order/insecure' \
 ```
 
 ```sh
+#Get order
+curl --location 'http://localhost:8080/api/order/6757630fdcdf93310838b4b3'
+
 #New order
 curl --location 'http://localhost:8080/api/order' \
 --header 'Content-Type: application/json' \

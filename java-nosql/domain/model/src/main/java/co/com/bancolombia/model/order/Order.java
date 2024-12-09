@@ -5,8 +5,8 @@ import co.com.bancolombia.model.exceptions.BusinessException;
 import lombok.Builder;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -15,9 +15,9 @@ import static co.com.bancolombia.model.exceptions.message.BusinessErrorMessage.*
 import static co.com.bancolombia.model.validation.ValidationService.validate;
 
 @Builder(toBuilder = true)
-public record Order(String id, Client client, LocalDateTime date, List<DetailProduct> detail, BigDecimal total, State state) {
+public record Order(String id, Client client, ZonedDateTime date, List<DetailProduct> detail, BigDecimal total, State state) {
 
-    public Order(String id, Client client, LocalDateTime date, List<DetailProduct> detail, BigDecimal total, State state) {
+    public Order(String id, Client client, ZonedDateTime date, List<DetailProduct> detail, BigDecimal total, State state) {
         //Añadir validaciones
         validate(client, Objects::isNull, "Invalid client");
 
@@ -73,7 +73,7 @@ public record Order(String id, Client client, LocalDateTime date, List<DetailPro
     public static Order init(Client client) {
         return Order.builder()
                 .client(client)
-                .date(LocalDateTime.now(ZoneId.of("America/Bogota")))
+                .date(ZonedDateTime.now(ZoneId.of("America/Bogota")))
                 .build();
     }
 

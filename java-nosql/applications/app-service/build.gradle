@@ -2,8 +2,8 @@ apply plugin: 'org.springframework.boot'
 
 dependencies {
 	implementation project( ':client-consumer')
-	implementation 'org.reactivecommons.utils:object-mapper:0.1.0' //TODO: Eliminar
-	implementation project( ':mongo-repository')
+	//implementation 'org.reactivecommons.utils:object-mapper:0.1.0' //TODO: Eliminar
+    implementation project( ':mongo-repository')
 	implementation project( ':reactive-web')
     implementation project(':model')
     implementation project(':usecase')

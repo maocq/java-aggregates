@@ -14,6 +14,7 @@ spring:
   data:
     mongodb:
       uri: "mongodb://localhost:27017/test"
+      #uri: "mongodb://usertest:qytgZK9qt8ZV3I@docdb-2024-07-02-15-28-30.cluster-cptsrelsr8pt.us-east-1.docdb.amazonaws.com:27017/test?replicaSet=rs0&readPreference=secondaryPreferred&retryWrites=false"
 management:
   endpoints:
     web:

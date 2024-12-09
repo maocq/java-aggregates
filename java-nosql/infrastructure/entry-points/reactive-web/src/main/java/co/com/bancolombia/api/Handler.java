@@ -7,6 +7,7 @@ import co.com.bancolombia.usecase.deleteorderdetail.DeleteOrderDetailUseCase;
 import co.com.bancolombia.usecase.neworder.NewOrderRequest;
 import co.com.bancolombia.model.exceptions.BusinessException;
 import co.com.bancolombia.usecase.neworder.NewOrderUseCase;
+import co.com.bancolombia.usecase.querys.QueryUseCase;
 import co.com.bancolombia.usecase.saveorder.SaveOrderUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -20,11 +21,19 @@ import static co.com.bancolombia.model.exceptions.message.BusinessErrorMessage.I
 @RequiredArgsConstructor
 public class Handler {
 
+    private final QueryUseCase queryUseCase;
     private final SaveOrderUseCase saveOrderUseCase;
     private final NewOrderUseCase newOrderUseCase;
     private final AddOrderDetailUseCase addOrderDetailUseCase;
     private final DeleteOrderDetailUseCase deleteOrderDetailUseCase;
 
+
+    public Mono<ServerResponse> listenGetOrder(ServerRequest serverRequest) {
+        String orderId = serverRequest.pathVariable("orderId");
+
+        return queryUseCase.getOrderById(orderId)
+                .flatMap(response -> ServerResponse.ok().bodyValue(response));
+    }
 
     public Mono<ServerResponse> listenSaveInsecureOrder(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(Order.class)
