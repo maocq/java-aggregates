@@ -5,7 +5,6 @@ import co.com.bancolombia.model.exceptions.BusinessException;
 import lombok.Builder;
 
 import java.math.BigDecimal;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +72,7 @@ public record Order(String id, Client client, ZonedDateTime date, List<DetailPro
     public static Order init(Client client) {
         return Order.builder()
                 .client(client)
-                .date(ZonedDateTime.now(ZoneId.of("America/Bogota")))
+                .date(ZonedDateTime.now())
                 .build();
     }
 

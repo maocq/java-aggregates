@@ -12,6 +12,6 @@ public class ZonedDateTimeReadConverter implements Converter<Date, ZonedDateTime
     public ZonedDateTime convert(Date date) {
         return date.toInstant()
                 //.atZone(ZoneOffset.UTC);
-                .atZone(ZoneId.of("America/Bogota"));
+                .atZone(ZoneId.systemDefault());
     }
 }

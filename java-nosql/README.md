@@ -32,7 +32,7 @@ curl --location 'http://localhost:8080/api/order/insecure' \
         "id": "123",
         "name": "Foo"
     },
-    "date": "2024-04-29T18:01:57.873",
+    "date": "2024-12-09T18:51:53.521152-05:00",
     "detail": [
         {
             "id": "39bba8e0-8e58-4593-8ceb-2a97c1b8e8bd",

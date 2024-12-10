@@ -9,6 +9,8 @@ spring:
     console:
       enabled: true
       path: "/h2"
+  jackson:
+    time-zone: "America/Mexico_City"
   profiles:
     include: null
   data:
